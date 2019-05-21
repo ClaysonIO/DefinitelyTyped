@@ -5,6 +5,7 @@
 //                 Konstantin Ikonnikov <https://github.com/ikokostya>
 //                 Stijn Van Nieuwenhuyse <https://github.com/stijnvn>
 //                 Matthew Bull <https://github.com/wingsbob>
+//                 Ryan Wilson-Perkin <https://github.com/ryanwilsonperkin>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
 
@@ -90,12 +91,12 @@ declare namespace got {
 
     interface GotJSONFn {
         (url: GotUrl): GotPromise<any>;
-        (url: GotUrl, options: GotJSONOptions): GotPromise<any>;
+        (url: GotUrl, options: Partial<GotJSONOptions>): GotPromise<any>;
     }
 
     interface GotFormFn<T extends string | null> {
         (url: GotUrl): GotPromise<T extends null ? Buffer : string>;
-        (url: GotUrl, options: GotFormOptions<T>): GotPromise<T extends null ? Buffer : string>;
+        (url: GotUrl, options: Partial<GotFormOptions<T>>): GotPromise<T extends null ? Buffer : string>;
     }
 
     interface GotBodyFn<T extends string | null> {
@@ -251,7 +252,7 @@ declare namespace got {
 
     interface RetryOptions {
         retries?: number | RetryFunction;
-        methods?: Array<'GET' | 'PUT' | 'HEAD' | 'DELETE' | 'OPTIONS' | 'TRACE'>;
+        methods?: Array<'GET' | 'POST' | 'PUT' | 'HEAD' | 'DELETE' | 'OPTIONS' | 'TRACE'>;
         statusCodes?: Array<408 | 413 | 429 | 500 | 502 | 503 | 504>;
         maxRetryAfter?: number;
         /**
