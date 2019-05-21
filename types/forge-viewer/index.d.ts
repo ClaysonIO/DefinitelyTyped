@@ -346,6 +346,7 @@ declare namespace Autodesk {
           isViewable(): boolean;
           isViewPreset(): boolean;
           name(): string;
+          type(): string;
           search(propsToMatch: BubbleNodeSearchProps): BubbleNode[];
           searchByTag(tagsToMatch: object): BubbleNode[];
           setTag(tag: string, value: any): void;
